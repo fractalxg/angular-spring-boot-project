@@ -23,4 +23,8 @@ public class EmployeeService {
         employeeDb.findAll().forEach(employees::add);
         return employees;
     }
+
+    public Employee getEmployees(Integer employeeId){
+        return employeeDb.findById(employeeId).orElseThrow();
+    }
 }
