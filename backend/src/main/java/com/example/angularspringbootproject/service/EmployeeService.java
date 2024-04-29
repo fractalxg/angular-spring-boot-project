@@ -27,4 +27,8 @@ public class EmployeeService {
     public Employee getEmployees(Integer employeeId){
         return employeeDb.findById(employeeId).orElseThrow();
     }
+
+    public void deleteEmployee(Integer employeeId) {
+        employeeDb.deleteById(employeeId);
+    }
 }
