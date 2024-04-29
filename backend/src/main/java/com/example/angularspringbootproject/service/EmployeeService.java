@@ -31,4 +31,9 @@ public class EmployeeService {
     public void deleteEmployee(Integer employeeId) {
         employeeDb.deleteById(employeeId);
     }
+
+    public Employee updateEmployee(Employee employee) {
+        employeeDb.findById(employee.getEmployeeId()).orElseThrow();
+        return employeeDb.save(employee);
+    }
 }
