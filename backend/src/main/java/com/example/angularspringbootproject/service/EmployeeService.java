@@ -5,6 +5,9 @@ import com.example.angularspringbootproject.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class EmployeeService {
 
@@ -12,6 +15,25 @@ public class EmployeeService {
     private EmployeeDb employeeDb;
 
     public Employee saveEmployee(Employee employee){
+        return employeeDb.save(employee);
+    }
+
+    public List<Employee> getEmployees() {
+        List<Employee> employees = new ArrayList<>();
+        employeeDb.findAll().forEach(employees::add);
+        return employees;
+    }
+
+    public Employee getEmployees(Integer employeeId){
+        return employeeDb.findById(employeeId).orElseThrow();
+    }
+
+    public void deleteEmployee(Integer employeeId) {
+        employeeDb.deleteById(employeeId);
+    }
+
+    public Employee updateEmployee(Employee employee) {
+        employeeDb.findById(employee.getEmployeeId()).orElseThrow();
         return employeeDb.save(employee);
     }
 }

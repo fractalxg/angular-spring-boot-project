@@ -3,9 +3,9 @@ package com.example.angularspringbootproject.controller;
 import com.example.angularspringbootproject.entity.Employee;
 import com.example.angularspringbootproject.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class EmployeeController {
@@ -16,5 +16,25 @@ public class EmployeeController {
     @PostMapping("/save/employee")
     public Employee saveEmployee(@RequestBody Employee employee){
         return employeeService.saveEmployee(employee);
+    }
+
+    @GetMapping("/get/employee")
+    public List<Employee> getEmployees(){
+        return employeeService.getEmployees();
+    }
+
+    @GetMapping("/get/employee/{employeeId}")
+    public Employee getEmployee(@PathVariable Integer employeeId){
+        return employeeService.getEmployees(employeeId);
+    }
+
+    @DeleteMapping("/delete/employee/{employeeId}")
+    public void deleteEmployee(@PathVariable Integer employeeId){
+        employeeService.deleteEmployee(employeeId);
+    }
+
+    @PutMapping("/update/employee")
+    public Employee updateEmployee(@RequestBody Employee employee) {
+        return employeeService.updateEmployee(employee);
     }
 }
