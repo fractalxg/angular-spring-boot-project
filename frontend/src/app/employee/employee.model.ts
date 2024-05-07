@@ -3,7 +3,7 @@ export interface Employee {
     employeeName: string,
     employeeContactNumber: string,
     employeeAddress: string,
-    employeeContactGender: string,
-    employeeContactDepartment: string,
-    employeeContactSkills: string,
+    employeeGender: string,
+    employeeDepartment: string,
+    employeeSkills: string,
 }

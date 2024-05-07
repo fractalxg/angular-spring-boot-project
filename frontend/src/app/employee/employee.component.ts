@@ -13,9 +13,9 @@ export class EmployeeComponent implements OnInit{
     employeeName: '',
     employeeContactNumber: '',
     employeeAddress: '',
-    employeeContactGender: '',
-    employeeContactDepartment: '',
-    employeeContactSkills: ''
+    employeeGender: '',
+    employeeDepartment: '',
+    employeeSkills: ''
   }
 
   constructor() {
