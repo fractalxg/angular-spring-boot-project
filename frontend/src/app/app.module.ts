@@ -12,6 +12,11 @@ import { EmployeeComponent } from './employee/employee.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatDividerModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],
