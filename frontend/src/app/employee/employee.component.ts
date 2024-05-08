@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from './employee.model';
+import { NgForm } from '@angular/forms';
+import { EmployeeService } from '../employee.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-employee',
@@ -19,8 +22,20 @@ export class EmployeeComponent implements OnInit {
 
   skills: string[] = [];
 
-  constructor() {}
+  constructor(private employeeService: EmployeeService) {}
   ngOnInit(): void {}
+
+  saveEmployee(employeeForm: NgForm): void {
+    this.employeeService.saveEmployee(this.employee).subscribe({
+      next: (res: Employee) => {
+        console.log(res);
+        employeeForm.reset();
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err);
+      }
+    });
+  }
 
   selectGender(gender: string): void {
     this.employee.employeeGender = gender;

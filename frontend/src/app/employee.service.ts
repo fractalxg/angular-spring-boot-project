@@ -1,9 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Employee } from './employee/employee.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EmployeeService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor() { }
+  api = 'http://localhost:9090';
+
+  public saveEmployee(employee: Employee): Observable<Employee> {
+    return this.httpClient.post<Employee>(
+      `${this.api}/save/employee`,
+      employee
+    );
+  }
 }
