@@ -25,15 +25,32 @@ export class EmployeeComponent implements OnInit {
   constructor(private employeeService: EmployeeService) {}
   ngOnInit(): void {}
 
+  checkSkills(skill: string) {
+    return (
+      this.employee.employeeSkills != null &&
+      this.employee.employeeSkills.includes(skill)
+    );
+  }
+
+  checkGender(gender: string) {
+    return (
+      this.employee.employeeGender != null &&
+      this.employee.employeeGender == gender
+    );
+  }
+
   saveEmployee(employeeForm: NgForm): void {
     this.employeeService.saveEmployee(this.employee).subscribe({
       next: (res: Employee) => {
         console.log(res);
         employeeForm.reset();
+        this.employee.employeeGender = '';
+        this.skills = [];
+        this.employee.employeeSkills = '';
       },
       error: (err: HttpErrorResponse) => {
         console.log(err);
-      }
+      },
     });
   }
 
