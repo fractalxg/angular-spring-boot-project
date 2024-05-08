@@ -4,10 +4,9 @@ import { Employee } from './employee.model';
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css']
+  styleUrls: ['./employee.component.css'],
 })
-export class EmployeeComponent implements OnInit{
-  
+export class EmployeeComponent implements OnInit {
   employee: Employee = {
     employeeId: 0,
     employeeName: '',
@@ -15,12 +14,29 @@ export class EmployeeComponent implements OnInit{
     employeeAddress: '',
     employeeGender: '',
     employeeDepartment: '',
-    employeeSkills: ''
+    employeeSkills: '',
+  };
+
+  skills: string[] = [];
+
+  constructor() {}
+  ngOnInit(): void {}
+
+  selectGender(gender: string): void {
+    this.employee.employeeGender = gender;
   }
 
-  constructor() {
+  onSkillsChanges(event: any): void {
+    if (event.checked) {
+      this.skills.push(event.source.value);
+    } else {
+      this.skills.forEach((item, index) => {
+        if (item == event.source.value) {
+          this.skills.splice(index, 1);
+        }
+      });
+    }
 
-  }
-  ngOnInit(): void {
+    this.employee.employeeSkills = this.skills.toString();
   }
 }
