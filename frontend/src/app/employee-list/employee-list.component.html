@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="mb-3">
+    <button mat-raised-button color="accent" routerLink="/employee">
+      Go to Employee Form
+    </button>
+  </div>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="employeeId">
       <th mat-header-cell *matHeaderCellDef>Id</th>
