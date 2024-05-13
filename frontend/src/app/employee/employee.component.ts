@@ -3,6 +3,7 @@ import { Employee } from './employee.model';
 import { NgForm } from '@angular/forms';
 import { EmployeeService } from '../employee.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee',
@@ -22,7 +23,12 @@ export class EmployeeComponent implements OnInit {
 
   skills: string[] = [];
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(
+    private employeeService: EmployeeService,
+    private router: Router
+  ) {
+
+  }
   ngOnInit(): void {}
 
   checkSkills(skill: string) {
@@ -47,6 +53,7 @@ export class EmployeeComponent implements OnInit {
         this.employee.employeeGender = '';
         this.skills = [];
         this.employee.employeeSkills = '';
+        this.router.navigate(["/employee-list"])
       },
       error: (err: HttpErrorResponse) => {
         console.log(err);
