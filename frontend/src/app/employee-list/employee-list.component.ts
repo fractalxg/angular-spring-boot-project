@@ -31,6 +31,7 @@ export class EmployeeListComponent implements OnInit {
     this.employeeService.deleteEmployee(employeeId).subscribe({
       next: (res) => {
         console.log(res);
+        this.getEmployeeList();
       },
       error: (err: HttpErrorResponse) => {
         console.log(err);
