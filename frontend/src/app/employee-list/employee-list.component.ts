@@ -9,7 +9,6 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./employee-list.component.css'],
 })
 export class EmployeeListComponent implements OnInit {
-
   dataSource: Employee[] = [];
 
   displayedColumns: string[] = [
@@ -20,13 +19,24 @@ export class EmployeeListComponent implements OnInit {
     'employeeDepartment',
     'employeeGender',
     'employeeSkills',
-    'delete'
+    'delete',
   ];
 
   constructor(private employeeService: EmployeeService) {
     this.getEmployeeList();
   }
   ngOnInit(): void {}
+
+  deleteEmployee(employeeId: number): void {
+    this.employeeService.deleteEmployee(employeeId).subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err);
+      },
+    });
+  }
 
   getEmployeeList(): void {
     this.employeeService.getEmployees().subscribe({
