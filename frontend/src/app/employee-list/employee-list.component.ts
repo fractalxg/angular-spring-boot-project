@@ -20,6 +20,7 @@ export class EmployeeListComponent implements OnInit {
     'employeeDepartment',
     'employeeGender',
     'employeeSkills',
+    'delete'
   ];
 
   constructor(private employeeService: EmployeeService) {
