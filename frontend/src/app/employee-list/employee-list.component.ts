@@ -19,6 +19,7 @@ export class EmployeeListComponent implements OnInit {
     'employeeDepartment',
     'employeeGender',
     'employeeSkills',
+    'edit',
     'delete',
   ];
 
