@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'header', component: HeaderComponent },
   { path: 'employee', component: EmployeeComponent, resolve: {employee: EmployeeResolver} },
   { path: 'employee-list', component: EmployeeListComponent },
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: '/employee', pathMatch: 'full' },
 ];
 
 @NgModule({
